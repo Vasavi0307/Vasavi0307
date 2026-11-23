@@ -15,7 +15,6 @@ I study how genetic variants disrupt early brain development, with a focus on de
 | 2017–18 | University of Madras | **In vivo neurotoxicology.** Neuroprotective effect of quinic acid against lead acetate-induced oxidative stress in the cerebellum and hippocampus of Sprague Dawley rats. Used behavioral assays (rotarod, Morris water maze, open field, forced swim), antioxidant enzyme and mitochondrial complex assays, histopathology and RT-PCR for neuro-inflammatory markers. |
 | 2020–21 | Stanford University, Dept. of Pathology | **Temporal gene expression in iPSC-derived neurons.** Built a 96-well SYBR Green qPCR array that profiles 27 genes across four time points of NGN2-directed cortical differentiation. Also profiled germ-layer markers in isogenic *SNCA*-knockout iPSC lines. |
 | 2022–23 | NIMHANS, Bangalore (Senior Research Fellow) | **Disease-relevant 3D models.** Established long-term cortical organoid culture (Day 14–125) and characterized it by immunocytochemistry. Ran live-cell imaging and single-cell tracking of patient-derived neural stem cells. |
-| 2026 → | Interest: NeuroSync, UMC Utrecht | **Circuit-level timing.** Thalamus-subplate-cortex synchronization in human stem cell models. |
 
 ## 📚 Publications
 
