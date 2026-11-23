@@ -1,6 +1,6 @@
 # Hi, I'm Vasavi Nallur Srinivasaraghavan 👋
 
-**Stem cell biologist modeling neurodevelopmental disorders with human iPSC-derived neurons and 3D cortical organoids.**
+**Stem cell biologist modeling neurological disorders with human iPSC-derived neurons and 3D cortical organoids.**
 
 I study how genetic variants disrupt early brain development, with a focus on developmental *timing*: when gene expression changes, when cells migrate, and when circuits come online. My work has moved from rodent neurotoxicology to iPSC-derived neurons and then to patient-derived organoids, always toward more human-relevant models.
 
@@ -46,4 +46,4 @@ Full details and PDFs are in the [Publications repository](https://github.com/Va
 
 ---
 
-*Open to PhD opportunities in stem cell models of neurodevelopmental disorders.*
+*Open to PhD opportunities in stem cell models of neurological disorders.*
