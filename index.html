@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vasavi Nallur Srinivasaraghavan</title>
+<meta name="description" content="Stem cell biologist modeling neurodevelopmental disorders with iPSC-derived neurons and cortical organoids.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout: single left-aligned column with a wide margin rail for years/labels; one data figure (day axis) as the signature element. */
+  --paper: #f2f5f6;
+  --panel: #ffffff;
+  --ink: #0f1d28;
+  --muted: #526371;
+  --line: #d3dce1;
+  --accent: #14708a;
+  --accent-soft: #dcecf1;
+  --signal: #b4531a;
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0d1820; --panel: #14232d; --ink: #e8eef1; --muted: #9bb0bc;
+    --line: #2a3d49; --accent: #5fc0d9; --accent-soft: #17323d; --signal: #f0a066;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0d1820; --panel: #14232d; --ink: #e8eef1; --muted: #9bb0bc;
+  --line: #2a3d49; --accent: #5fc0d9; --accent-soft: #17323d; --signal: #f0a066;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 17px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+/* Nav */
+nav { border-bottom: 1px solid var(--line); background: var(--paper); position: sticky; top: 0; z-index: 5; }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap; }
+nav .mark { font-family: var(--display); font-weight: 600; font-size: 18px; color: var(--ink); text-decoration: none; }
+nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; flex-wrap: wrap; }
+nav ul a { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; }
+nav ul a:hover { color: var(--accent); }
+
+/* Hero */
+.hero { padding: 72px 0 56px; border-bottom: 1px solid var(--line); }
+.hero .kicker { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: .04em; margin-bottom: 20px; }
+.hero h1 { font-size: clamp(38px, 6.4vw, 68px); letter-spacing: -0.01em; max-width: 14ch; }
+.hero .lede { margin-top: 24px; max-width: 58ch; font-size: 20px; color: var(--ink); }
+.hero .lede em { font-style: normal; color: var(--accent); font-weight: 500; }
+.links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.btn { display: inline-block; padding: 10px 18px; border: 1.5px solid var(--ink); color: var(--ink); text-decoration: none; font-weight: 500; font-size: 15px; border-radius: 3px; }
+.btn.primary { background: var(--ink); color: var(--paper); }
+.btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.email-line { margin-top: 18px; font-family: var(--mono); font-size: 14px; color: var(--muted); }
+
+/* Sections: rail + content */
+section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: 200px 1fr; gap: 40px; }
+.rail h2 { font-size: 15px; font-family: var(--mono); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 760px) { .row { grid-template-columns: 1fr; gap: 20px; } nav ul { gap: 14px; } }
+
+/* Figure */
+.figure { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 22px 22px 14px; margin-top: 28px; }
+.figure figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; max-width: 70ch; }
+.figure svg { width: 100%; height: auto; display: block; }
+.figure .t { fill: var(--muted); font-family: var(--mono); font-size: 11px; }
+.figure .tl { fill: var(--ink); font-family: var(--body); font-size: 12.5px; }
+.figure .axis { stroke: var(--line); stroke-width: 1.5; }
+.figure .tick { stroke: var(--muted); stroke-width: 1; }
+.figure .bar1 { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+.figure .bar2 { fill: var(--accent); }
+.figure .dot { fill: var(--accent); }
+.figure .bartext { fill: #fff; font-family: var(--body); font-size: 13px; font-weight: 500; }
+:root[data-theme="dark"] .figure .bartext { fill: #0d1820; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .figure .bartext { fill: #0d1820; } }
+
+/* Timeline */
+.entries { display: grid; gap: 34px; }
+.entry { display: grid; grid-template-columns: 110px 1fr; gap: 24px; }
+.entry .when { font-family: var(--mono); font-size: 14px; color: var(--accent); padding-top: 4px; }
+.entry h3 { font-size: 22px; }
+.entry .where { color: var(--muted); font-size: 15px; margin: 4px 0 10px; }
+.entry p { max-width: 62ch; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.tag { font-size: 13px; padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: var(--panel); }
+@media (max-width: 560px) { .entry { grid-template-columns: 1fr; gap: 6px; } }
+
+/* Publications */
+.pubs { display: grid; gap: 0; }
+.pub { padding: 26px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 70px 1fr; gap: 20px; }
+.pub:first-child { border-top: 0; padding-top: 0; }
+.pub .yr { font-family: var(--mono); color: var(--accent); font-size: 15px; padding-top: 3px; }
+.pub h3 { font-size: 21px; margin-bottom: 8px; }
+.pub .auth { font-size: 15px; color: var(--muted); }
+.pub .auth b { color: var(--ink); font-weight: 600; }
+.pub .jr { font-size: 15px; margin-top: 6px; }
+.pub .desc { margin-top: 10px; max-width: 64ch; }
+.badge { display: inline-block; font-family: var(--mono); font-size: 12px; padding: 2px 8px; border-radius: 3px; background: var(--accent-soft); color: var(--accent); margin-left: 6px; vertical-align: 2px; }
+@media (max-width: 560px) { .pub { grid-template-columns: 1fr; gap: 4px; } }
+
+/* Findings */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-top: 8px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 20px; }
+.stat .n { font-family: var(--display); font-size: 36px; font-weight: 600; line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.stat .n small { font-size: 16px; color: var(--signal); font-family: var(--mono); font-weight: 500; }
+.stat p { margin-top: 10px; font-size: 15px; color: var(--muted); }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+.skills h3 { font-size: 18px; margin-bottom: 10px; color: var(--accent); font-family: var(--body); font-weight: 600; }
+.skills ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 16px; }
+.skills li::before { content: ""; display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; margin-right: 10px; vertical-align: 2px; }
+
+/* Interests */
+.interests { display: grid; gap: 18px; max-width: 62ch; }
+.interests p::first-line { font-weight: 500; }
+
+footer { padding: 48px 0 64px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="mark" href="#top">V. Nallur Srinivasaraghavan</a>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#findings">Findings</a></li>
+      <li><a href="#methods">Methods</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="kicker">STEM CELL BIOLOGY · NEURODEVELOPMENT</p>
+    <h1>Vasavi Nallur Srinivasaraghavan</h1>
+    <p class="lede">I model neurodevelopmental disorders with human iPSC-derived neurons and 3D cortical organoids. My question is about <em>timing</em>: when gene expression shifts, when cells migrate, and when circuits come online, and how genetic variants throw that schedule off.</p>
+    <div class="links">
+      <a class="btn primary" href="#publications">Read my publications</a>
+      <a class="btn" href="https://www.linkedin.com/in/vasavinallursrinivasaraghavan3797">LinkedIn</a>
+      <a class="btn" href="https://github.com/Vasavi0307/Publications">GitHub</a>
+    </div>
+    <p class="email-line">vasavi371997@gmail.com</p>
+  </div>
+</header>
+
+<section id="research">
+  <div class="wrap">
+    <div class="row">
+      <div class="rail"><h2>Research</h2></div>
+      <div>
+        <p style="max-width:62ch">Each step in my training moved toward models that are more human and more sensitive to time: from a rat model of oxidative stress, to neurons grown from stem cells, to organoids from patients.</p>
+
+        <figure class="figure">
+          <svg viewBox="0 0 700 178" role="img" aria-labelledby="figt figd">
+            <title id="figt">Developmental time windows covered in my work</title>
+            <desc id="figd">A day axis from 0 to 125. NGN2 cortical neuron differentiation is profiled at days 0, 15 and 30. Cortical organoid culture is characterized from day 14 to day 125.</desc>
+            <!-- x = 30 + 5 * day -->
+            <text class="t" x="30" y="40">D0</text>
+            <text class="t" x="105" y="40">D15</text>
+            <text class="t" x="180" y="40">D30</text>
+            <rect class="bar1" x="30" y="48" width="150" height="24" rx="3"/>
+            <circle class="dot" cx="30" cy="60" r="4.5"/>
+            <circle class="dot" cx="105" cy="60" r="4.5"/>
+            <circle class="dot" cx="180" cy="60" r="4.5"/>
+            <text class="tl" x="196" y="65">NGN2 cortical neurons · 27-gene qPCR array · Stanford</text>
+
+            <rect class="bar2" x="100" y="92" width="555" height="26" rx="3"/>
+            <text class="bartext" x="114" y="110">Cortical organoids, day 14 to 125 · NIMHANS</text>
+
+            <line class="axis" x1="30" y1="140" x2="655" y2="140"/>
+            <g>
+              <line class="tick" x1="30" y1="140" x2="30" y2="146"/><text class="t" x="30" y="162" text-anchor="middle">0</text>
+              <line class="tick" x1="155" y1="140" x2="155" y2="146"/><text class="t" x="155" y="162" text-anchor="middle">25</text>
+              <line class="tick" x1="280" y1="140" x2="280" y2="146"/><text class="t" x="280" y="162" text-anchor="middle">50</text>
+              <line class="tick" x1="405" y1="140" x2="405" y2="146"/><text class="t" x="405" y="162" text-anchor="middle">75</text>
+              <line class="tick" x1="530" y1="140" x2="530" y2="146"/><text class="t" x="530" y="162" text-anchor="middle">100</text>
+              <line class="tick" x1="655" y1="140" x2="655" y2="146"/><text class="t" x="655" y="162" text-anchor="middle">125</text>
+              <text class="t" x="672" y="162">days in culture</text>
+            </g>
+          </svg>
+          <figcaption>The culture time windows I have worked in, drawn to one scale. Neuron differentiation was sampled at iPSC, day 0, day 15 and day 30. Organoids were maintained and characterized from day 14 to day 125.</figcaption>
+        </figure>
+
+        <div class="entries" style="margin-top:44px">
+          <article class="entry">
+            <div class="when">2022 – 2023</div>
+            <div>
+              <h3>Senior Research Fellow</h3>
+              <p class="where">NIMHANS, Bangalore</p>
+              <p>Set up and characterized long-term cortical organoid culture with consistent morphology and viability, and confirmed progenitor and neuronal identity by immunocytochemistry across time points. Used live-cell time-lapse imaging and single-cell tracking to compare neural stem cells from bipolar disorder patients and matched controls.</p>
+              <div class="tags"><span class="tag">Cortical organoids</span><span class="tag">Neural stem cells</span><span class="tag">Live imaging</span><span class="tag">Single-cell tracking</span></div>
+            </div>
+          </article>
+          <article class="entry">
+            <div class="when">2020 – 2021</div>
+            <div>
+              <h3>Graduate research, Department of Pathology</h3>
+              <p class="where">Stanford University School of Medicine</p>
+              <p>Designed and validated a 96-well SYBR Green qPCR array that profiles 27 genes across four time points of NGN2-directed iPSC-to-cortical-neuron differentiation, removing a bottleneck in comparing differentiation yield across patient lines. Also profiled germ-layer markers in isogenic <em>SNCA</em>-knockout iPSC clones during embryoid body differentiation.</p>
+              <div class="tags"><span class="tag">iPSC differentiation</span><span class="tag">qPCR assay design</span><span class="tag">CRISPR/Cas9 lines</span><span class="tag">Parkinson's disease</span></div>
+            </div>
+          </article>
+          <article class="entry">
+            <div class="when">2017 – 2018</div>
+            <div>
+              <h3>Undergraduate research</h3>
+              <p class="where">University of Madras</p>
+              <p>Tested whether quinic acid protects the cerebellum and hippocampus of Sprague Dawley rats from lead acetate-induced oxidative stress. This was my first full study, from behavior and biochemistry to histology and RT-PCR for neuro-inflammatory markers.</p>
+              <div class="tags"><span class="tag">In vivo neurotoxicology</span><span class="tag">Behavioral assays</span><span class="tag">Oxidative stress</span><span class="tag">Histology</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <div class="row">
+      <div class="rail"><h2>Publications</h2></div>
+      <div class="pubs">
+        <article class="pub">
+          <div class="yr">2024</div>
+          <div>
+            <h3>Altered neuroepithelial morphogenesis and migration defects in iPSC-derived cerebral organoids and 2D neural stem cells in familial bipolar disorder</h3>
+            <p class="auth">Phalnikar K, Srividya M, Mythri SV, <b>Vasavi NS</b>, Ganguly A, <i>et al.</i> (equal contribution among the first five authors)</p>
+            <p class="jr"><i>Oxford Open Neuroscience</i>, kvae007 · <a href="https://doi.org/10.1093/oons/kvae007">doi:10.1093/oons/kvae007</a></p>
+            <p class="desc">Organoids from patients in a clinically dense family had fewer neuroepithelial buds, a smaller ventricular zone and fewer cycling progenitors. Neural stem cells from patients migrated abnormally in time-lapse imaging.</p>
+          </div>
+        </article>
+        <article class="pub">
+          <div class="yr">2022</div>
+          <div>
+            <h3>Gene Expression Analysis in Stem Cell-derived Cortical Neuronal Cultures Using Multi-well SYBR Green Quantitative PCR Arrays <span class="badge">First author</span></h3>
+            <p class="auth"><b>Srinivasaraghavan VN</b>, Zafar F, Schüle B</p>
+            <p class="jr"><i>Bio-protocol</i> 12(14): e4476 · <a href="https://doi.org/10.21769/BioProtoc.4476">doi:10.21769/BioProtoc.4476</a></p>
+            <p class="desc">A customizable, low-cost array of 27 markers and two housekeeping genes for screening how efficiently iPSCs become excitatory cortical neurons. Primer plates can be made in batches and stored at room temperature.</p>
+          </div>
+        </article>
+        <article class="pub">
+          <div class="yr">2022</div>
+          <div>
+            <h3>Isogenic human <i>SNCA</i> gene dosage induced pluripotent stem cells to model Parkinson's disease</h3>
+            <p class="auth">Zafar F, <b>Srinivasaraghavan VN</b>, Chen MY, Morato Torres CA, Schüle B</p>
+            <p class="jr"><i>Stem Cell Research</i> 60: 102733 · <a href="https://doi.org/10.1016/j.scr.2022.102733">doi:10.1016/j.scr.2022.102733</a></p>
+            <p class="desc">CRISPR/Cas9 frameshift mutations in exon 2 of <i>SNCA</i> in patient iPSCs with an <i>SNCA</i> triplication produced a panel of clones for studying the effects of different alpha-synuclein levels.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="findings">
+  <div class="wrap">
+    <div class="row">
+      <div class="rail"><h2>Findings</h2></div>
+      <div>
+        <p style="max-width:62ch;margin-bottom:24px">Results from the three papers.</p>
+        <div class="stats">
+          <div class="stat"><div class="n">27</div><p>genes in the qPCR array, tracked across 4 time points of cortical neuron differentiation</p></div>
+          <div class="stat"><div class="n">p &lt; 0.0001</div><p>for lower migration speed in bipolar disorder patient neural stem cells</p></div>
+          <div class="stat"><div class="n">p &lt; 0.0001</div><p>for lost directional persistence, in 4 lines (2 control, 2 patient)</p></div>
+          <div class="stat"><div class="n">5</div><p>isogenic <i>SNCA</i> clones profiled across all three germ layers</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="methods">
+  <div class="wrap">
+    <div class="row">
+      <div class="rail"><h2>Methods</h2></div>
+      <div class="skills">
+        <div>
+          <h3>Stem cell culture</h3>
+          <ul>
+            <li>Human iPSC maintenance</li>
+            <li>NGN2-directed cortical neurons</li>
+            <li>Embryoid bodies</li>
+            <li>Long-term cortical organoids</li>
+            <li>Neural stem cells</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Molecular biology</h3>
+          <ul>
+            <li>SYBR Green qPCR assay and primer design</li>
+            <li>RT-PCR</li>
+            <li>Gene expression profiling</li>
+            <li>Gene-edited line characterization</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Imaging and analysis</h3>
+          <ul>
+            <li>Immunocytochemistry</li>
+            <li>Live-cell time-lapse imaging</li>
+            <li>Single-cell tracking</li>
+            <li>Histology</li>
+          </ul>
+        </div>
+        <div>
+          <h3>In vivo and behavior</h3>
+          <ul>
+            <li>Rodent models</li>
+            <li>Rotarod, Morris water maze, open field, forced swim</li>
+            <li>Oxidative stress biochemistry</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="interests">
+  <div class="wrap">
+    <div class="row">
+      <div class="rail"><h2>Where next</h2></div>
+      <div class="interests">
+        <p>How genetic variants disrupt early brain development. I want to study this in human 3D models, organoids and assembloids, where the relationships between brain regions can be built and observed.</p>
+        <p>Timing between regions. The subplate holds back thalamic axons before they enter cortex, and the earliest cortical circuits run on a schedule that differs between species. I want to know whether that synchrony breaks down in autism-associated genetic backgrounds, and whether live imaging and single-cell tracking can measure it.</p>
+        <p>Critical windows. Testing when an exposure such as valproic acid matters during assembly of these circuits, using the same time-resolved profiling I built at Stanford.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:0">
+  <div class="wrap">
+    <div class="row">
+      <div class="rail"><h2>Contact</h2></div>
+      <div>
+        <p style="max-width:56ch;font-size:20px">I am looking for a PhD position in stem cell models of neurodevelopmental disorders.</p>
+        <div class="links">
+          <a class="btn primary" href="mailto:vasavi371997@gmail.com">Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/vasavinallursrinivasaraghavan3797">LinkedIn</a>
+          <a class="btn" href="https://github.com/Vasavi0307/Publications">GitHub</a>
+        </div>
+        <p class="email-line">vasavi371997@gmail.com</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Vasavi Nallur Srinivasaraghavan</span>
+    <span>Stem cell models of neurodevelopmental disorders</span>
+  </div>
+</footer>
+
+</body>
+</html>
